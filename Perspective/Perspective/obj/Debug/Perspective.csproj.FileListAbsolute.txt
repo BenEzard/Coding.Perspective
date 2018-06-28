@@ -1,0 +1,10 @@
+D:\Development\GitHub\Coding.Perspective\Perspective\Perspective\bin\Debug\Perspective.exe.config
+D:\Development\GitHub\Coding.Perspective\Perspective\Perspective\bin\Debug\Perspective.exe
+D:\Development\GitHub\Coding.Perspective\Perspective\Perspective\bin\Debug\Perspective.pdb
+D:\Development\GitHub\Coding.Perspective\Perspective\Perspective\obj\Debug\Perspective.csprojResolveAssemblyReference.cache
+D:\Development\GitHub\Coding.Perspective\Perspective\Perspective\obj\Debug\Perspective.Properties.Resources.resources
+D:\Development\GitHub\Coding.Perspective\Perspective\Perspective\obj\Debug\Perspective.csproj.GenerateResource.cache
+D:\Development\GitHub\Coding.Perspective\Perspective\Perspective\obj\Debug\Perspective.csproj.CoreCompileInputs.cache
+D:\Development\GitHub\Coding.Perspective\Perspective\Perspective\obj\Debug\Perspective.exe
+D:\Development\GitHub\Coding.Perspective\Perspective\Perspective\obj\Debug\Perspective.pdb
+D:\Development\GitHub\Coding.Perspective\Perspective\Perspective\obj\Debug\Perspective.MainForm.resources
