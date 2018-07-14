@@ -24,6 +24,34 @@ namespace Perspective
             + "Menas,Captain Yates, Danyel, Captain Yates,Danyel;"
             + "Cameus,Jessica,Danyel,Captain Yates;"
             + "Danyel,Unnamed,Danyel,Danyel";
+
+            cellBackgroundColorButton.BackColor = Color.FromArgb(153, 204, 255);
+            BlankCellBackgroundColorButton.BackColor = Color.LightGray;
+            titleTextBox.Text = "Vengeance Will Come (Draft)";
+
+            object[] fontList = GetFontList();
+            titleFontCombo.Items.AddRange(fontList);
+            normalCellFontCombo.Items.AddRange(fontList);
+            normalCellFontCombo.Text = "Calibri";
+            object[] fontSizes = { 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22 };
+            normalCellFontSizeCombo.Items.AddRange(fontSizes);
+            normalCellFontSizeCombo.Text = "10";
+        }
+
+        /// <summary>
+        /// Get the list of TrueType fonts.
+        /// </summary>
+        /// <returns></returns>
+        private object[] GetFontList()
+        {
+            int fontCount = System.Drawing.FontFamily.Families.Length;
+            object[] rValue = new object[fontCount];
+
+            for (int counter = 0; counter < fontCount; counter++)
+            {
+                rValue[counter] = System.Drawing.FontFamily.Families[counter].Name;
+            }
+            return rValue;
         }
 
         private void generateButton_Click(object sender, EventArgs e)
@@ -36,20 +64,19 @@ namespace Perspective
 
             // Load the data into the model
             m_dataModel = new DataModel(GetCleanPerspectives());
-            m_chart = new PerspectiveChart(m_dataModel);
+            m_chart = new PerspectiveChart(m_dataModel, "","");
 
-            m_chart.CELL_BACKGROUND_COLOR = Color.Yellow;
-            m_chart.CELL_HORIZONTAL_SPACING = 10;
+            m_chart.SetNormalCellStyle(cellBackgroundColorButton.BackColor, normalCellTextColorButton.ForeColor, new Font(new FontFamily(normalCellFontCombo.Text), Convert.ToSingle(normalCellFontSizeCombo.Text), FontStyle.Regular));
+            m_chart.SetCellSpacing(int.Parse(cellGapHorizontalText.Text), int.Parse(cellGapHorizontalText.Text), 
+                int.Parse(cellPaddingHorizontalText.Text), int.Parse(cellPaddingVerticalText.Text));
+            m_chart.BlankCellPainting(blankCellPaintCheckBox.Checked, BlankCellBackgroundColorButton.BackColor);
             m_chart.CELL_BORDER_WIDTH = 1;
-            m_chart.CELL_HORIZONTAL_GAP = 5;
-            m_chart.CELL_HORIZONTAL_SPACING = 10;
-            m_chart.CELL_VERTICAL_GAP = 5;
-            m_chart.CELL_VERTICAL_SPACING = 10;
+            m_chart.SetTitles(titleTextBox.Text, subTitleTextBox.Text);
+
 
             m_chart.initialise();
 
-
-            m_chart.DrawImage();
+            pictureBox.Image = m_chart.DrawImage();
         }
 
         private string GetCleanPerspectives() {
@@ -61,5 +88,38 @@ namespace Perspective
             return rValue;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                cellBackgroundColorButton.BackColor = colorDialog.Color;
+            }            
+        }
+
+        private void normalCellTextColorButton_Click(object sender, EventArgs e)
+        {
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                normalCellTextColorButton.ForeColor = colorDialog.Color;
+            }
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BlankCellBackgroundColorButton_Click(object sender, EventArgs e)
+        {
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                BlankCellBackgroundColorButton.BackColor = colorDialog.Color;
+            }
+        }
     }
 }

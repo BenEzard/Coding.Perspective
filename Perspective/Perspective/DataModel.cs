@@ -120,6 +120,14 @@ namespace Perspective
             }
         }
 
+        public PointOfView GetPOV(int index)
+        {
+            if (index < m_povs.Length)
+                return m_povs[index];
+            else
+                return null;
+        }
+
         IEnumerator IEnumerable.GetEnumerator()
         {
             return (IEnumerator)GetEnumerator();
